@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Task Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{% url 'add_task' %}" id="addTaskForm" novalidate>
+          {% csrf_token %}
+
+        {% for inp in form %}
+        <div class="mb-3">
+          {{inp.label_tag}}
+          {{inp}}
+        </div>
+        {% endfor %}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" form="addTaskForm" class="btn btn-primary">Add Task</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

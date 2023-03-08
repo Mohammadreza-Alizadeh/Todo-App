@@ -1,0 +1,106 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block head %}
+<style>
+     html, body {
+          height: 100%; /* Set the height of the body to 100% */
+     }
+        
+     body {
+          display: flex; /* Use the flexbox layout */
+          align-items: center; /* Center the content vertically */
+          justify-content: center; /* Center the content horizontally */
+     }
+        
+     .container {
+          max-width: 1200px; /* Optional: set a maximum width for the container */
+          text-align: center; /* Center the content inside the container */
+          
+     }
+      
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+<div class="container my-5">
+
+{% if messages %}
+     {% for message in messages %}
+     <div class = "alert {{message.tags}}" rol="alert">
+          {{message}}
+     </div>
+     {% endfor %}
+
+{% endif %}
+
+
+     <h1>Todo List</h1>
+     <div class="scroll">
+
+     
+     <table class="table table-dark">
+          <thead>
+               <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Date Created</th>
+                    <th></th>
+                    <th></th>
+                    <th>Delete</th>
+                    <th>Done</th>
+               </tr>
+          </thead>
+          <tbody>
+               
+               {% for task in tasks %}
+               {% if task.task_name %}
+               
+               <tr>
+                    {% if not task.task_status %}
+                    <td>{{task.task_name}}</td>
+                    {% else %}
+                    <td><del>{{task.task_name}}</del></td>
+                    {% endif %}
+                    {% if task.task_description %}
+                    <td>{{ task.task_description | truncatechars:20 }}</td>
+                    {% else %}
+                    <td> doesn't have description</td>
+
+                    {% endif %}
+                    <td>{{task.task_date}}</td>
+                    <td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#{{task.task_name|cut:" "}}_{{task.id}}">Details</button></td>
+                    <td><a href="{% url 'update_task' task.id %}"  class="btn btn-primary btn-sm" >update</a></td>
+                    <td><a href="{% url 'remove_task' task.id %}"><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></a></td>
+                    <td><a href="{% url 'change_priority' task.id %}"><button class="btn btn-primary btn-sm"><i class="bi bi-trash"></i></button></a></td>
+                    
+
+                    {% include 'layouts/modal.html' %}
+               </tr>
+               
+               
+               {% endif %}
+               {% endfor %}
+          </tbody>
+     </table>
+</div>
+     
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">Add Task</button>
+     {% include 'layouts/addTaskTemplate.html' %}
+     
+     <a href="{% url 'logout_user' %}" rol="button" class = "btn btn-danger" > Logout </a>
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}

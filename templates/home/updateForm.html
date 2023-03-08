@@ -1,0 +1,20 @@
+{% extends 'layouts/layout.html' %}
+
+{% block body %}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+     <form class="p-5 bg-dark custom-form" method = "POST", action = "{% url 'update_task' task.id %}">
+          {% csrf_token %}
+          {% for inp in updateForm %}
+               <div class="mb-3 "> 
+                    {{ inp.label_tag }}  
+                    {{ inp }}
+               </div>
+          {% endfor %}
+          <div class="d-grid gap-2 mt-4 ">
+               <input type="submit" value="Update" class="btn btn-primary width-100">
+          </div>
+     </form>
+   </div>     
+
+{% endblock %}

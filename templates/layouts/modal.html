@@ -1,0 +1,22 @@
+<div class="modal fade" id="{{task.task_name|cut:" "}}_{{task.id}}" tabindex="-1" aria-labelledby="task1ModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="task1ModalLabel">{{task.task_name}}</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+          {% if task.task_description %}
+          <p>{{task.task_description}}</p>
+          {% else %}
+          <p>This Task haven't any description</p>
+          {% endif %}
+           <p>Date created: {{task.task_date}}</p>
+           <p>Priority: {{task.task_priority}}</p>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         </div>
+       </div>
+     </div>
+   </div>

@@ -1,0 +1,39 @@
+{% extends 'layouts/layout.html' %}
+
+
+{% block body%}
+     
+
+
+ 
+     
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <form class="p-5 bg-dark custom-form" method = "POST", action = "{% url 'login_user' %}" novalidate>
+        {% csrf_token %}
+        <h3 class="mb-4">login form</h3>
+        
+        {% for inp in form %}
+            <div class="mb-3">    
+                {{inp.label_tag}}
+                {{inp}}
+            </div>
+        {% endfor %}
+
+       <button type="submit" class="btn btn-primary w-100 mb-2">Login</button>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class = "alert {{message.tags}}" rol="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class = "mt-3"> you don't have an account? <a class="link-danger"  href="{% url 'user_signup' %}"> signup </a> </div>
+     </form>
+   </div>     
+     
+     
+
+
+        
+ {% endblock %}    
