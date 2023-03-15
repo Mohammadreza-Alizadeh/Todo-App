@@ -5,7 +5,8 @@ from .models import Task
     
 class AddTaskForm(ModelForm):
     class Meta:
-        model = Task    
+        model = Task  
+          
         fields = ['task_name', 'task_description', 'task_priority']
         widgets = {
         'task_name':forms.TextInput(attrs={
