@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 LOCAL_APPS = [
     'applications.api.apps.ApiConfig',
+    'applications.users.apps.UsersConfig',
 ]
 
 
