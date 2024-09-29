@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=todo
+      - POSTGRES_USER=alizadeh
+      - POSTGRES_PASSWORD=1234
+    volumes:
+      - todo-postgres-data:/var/lib/postgresql/data/
+
+volumes:
+    todo-postgres-data:
