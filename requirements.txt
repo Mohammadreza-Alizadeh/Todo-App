@@ -2,3 +2,5 @@ django
 djangorestframework
 django-environ
 psycopg2-binary
+djangorestframework-simplejwt
+drf-spectacular
