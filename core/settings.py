@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 LOCAL_APPS = [
     'applications.api.apps.ApiConfig',
     'applications.users.apps.UsersConfig',
+    'applications.authentication.apps.AuthenticationConfig',
 ]
 
 
