@@ -45,6 +45,7 @@ LOCAL_APPS = [
     'applications.users.apps.UsersConfig',
     'applications.authentication.apps.AuthenticationConfig',
     'applications.tasks.apps.TasksConfig',
+    'applications.common.apps.CommonConfig'
 ]
 
 
