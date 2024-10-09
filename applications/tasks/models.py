@@ -15,7 +15,7 @@ class Task(BaseMdoel):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
     title = models.CharField(verbose_name='Task Title', max_length=128)    
-    description = models.CharField(verbose_name='Task Description', max_length=128, blank=True, null=True)
+    description = models.TextField(verbose_name='Task Description', blank=True, null=True)
     priority = models.IntegerField(verbose_name='Task Priority' ,choices=priority_choices, default=1) 
     is_done = models.BooleanField(verbose_name='Task Status ( is done )',  default=False)
 
